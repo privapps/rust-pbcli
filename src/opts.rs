@@ -2,12 +2,10 @@ use url::Url;
 use crate::PasteFormat;
 use clap::{Parser};
 
-const ABOUT: &str =
-    "pbcli is a command line client which allows to upload and download
+const ABOUT: &str = "pbcli is a command line client which allows to upload and download
 pastes from privatebin directly from the command line.
 
 Project home page: https://github.com/Mydayyy/pbcli";
-
 
 #[derive(Debug, Parser, Clone)]
 #[clap(setting = clap::AppSettings::AllArgsOverrideSelf, version = env ! ("CARGO_PKG_VERSION"), author = "Mydayyy <dev@mydayyy.eu>", about = ABOUT)]
@@ -60,6 +58,9 @@ pub struct Opts {
     #[clap(long)]
     #[clap(help("password to send to the token endpoint"))]
     pub oidc_password: Option<String>,
+
+    #[clap(long)]
+    pub dry: bool,
 }
 
 impl Opts {

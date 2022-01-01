@@ -104,7 +104,7 @@ fn handle_post(opts: &Opts) -> PbResult<()> {
         paste.attachment_name = Some(path.file_name().ok_or(PasteError::NotAFile)?.to_string_lossy().to_string());
     }
 
-    let res = api.post_paste(&paste, &opts.expire, password, &opts.format, opts.discussion, opts.burn)?;
+    let res = api.post_paste(&paste, &opts.expire, password, &opts.format, opts.discussion, opts.burn, opts.dry)?;
 
     if opts.json {
         std::io::stdout().write_all(serde_json::to_string(&res)?.as_bytes())?;
